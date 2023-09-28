@@ -16,6 +16,7 @@
         android:text="Time Sheet"
         android:translationX="-80dp"
         android:translationY="80dp"
+        android:id="@+id/timesheetBtn"
         ></Button>
 
     <Button

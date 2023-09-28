@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="@color/green">
+
+
+    <LinearLayout
+        android:layout_width="350dp"
+        android:layout_height="430dp"
+        android:orientation="vertical"
+        android:gravity="center">
+        <TextView
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="Type Entry"
+            android:gravity="center">
+
+        </TextView>
+        <EditText
+            android:id="@+id/po"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:gravity="center"
+            />
+        <TextView
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="Category"
+            android:gravity="center">
+
+        </TextView>
+        <EditText
+            android:id="@+id/categorie"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:gravity="center"
+            />
+        <TextView
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="Date (YYYY/MM/DD)"
+            android:gravity="center">
+
+        </TextView>
+        <EditText
+            android:id="@+id/date"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:inputType="date"
+            />
+        <ImageView
+            android:id="@+id/photoImageView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/default_photo_placeholder"
+            android:scaleType="centerCrop"
+            android:layout_centerHorizontal="true"/>
+        <Button
+            android:id="@+id/addPhotoButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/photoImageView"
+            android:layout_centerHorizontal="true"
+            android:text="Add Photo"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="400dp"
+        android:orientation="horizontal"
+
+        >
+
+        <Button
+            android:id="@+id/delete_subject"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:layout_weight="1"
+
+            android:text="delete"
+
+            />
+
+        <Button
+            android:id="@+id/add_subject"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:layout_weight="1"
+            android:text="Add" />
+    </LinearLayout>
+
+</RelativeLayout>
