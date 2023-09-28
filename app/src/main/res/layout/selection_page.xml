@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@color/white">
+
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:backgroundTint="@color/green"
+        android:gravity="center"
+        android:text="Time Sheet"
+        android:translationX="-80dp"
+        android:translationY="80dp"
+        ></Button>
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:gravity="center"
+        android:text="Daily Hours"
+        android:backgroundTint="@color/green"
+        android:translationX="80dp"
+        android:translationY="-20dp"
+        ></Button>
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:gravity="center"
+        android:text="Maximum and MinimumDaily Goals"
+        android:backgroundTint="@color/green"
+        android:translationX="-80dp"
+        android:translationY="50dp"
+        ></Button>
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:gravity="center"
+        android:text="Team Management"
+        android:backgroundTint="@color/green"
+        android:translationX="80dp"
+        android:translationY="-50dp"
+        ></Button>
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:gravity="center"
+        android:text="Achievements"
+        android:backgroundTint="@color/green"
+        android:translationX="-80dp"
+        android:translationY="20dp"
+        ></Button>
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:gravity="center"
+        android:text="Payment Calculator"
+        android:backgroundTint="@color/green"
+        android:translationX="80dp"
+        android:translationY="-80dp"
+        ></Button>
+
+</LinearLayout>
