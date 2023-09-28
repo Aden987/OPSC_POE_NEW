@@ -13,6 +13,12 @@
         android:theme="@style/Theme.OPSC_POE_new"
         tools:targetApi="31">
         <activity
+            android:name=".TimesheeyEntry"
+            android:exported="false" />
+        <activity
+            android:name=".SelectPage"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

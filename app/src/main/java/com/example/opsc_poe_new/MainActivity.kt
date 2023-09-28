@@ -1,5 +1,7 @@
 package com.example.opsc_poe_new
 
+import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -16,6 +18,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
+    @SuppressLint("SuspiciousIndentation")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -28,7 +31,9 @@ class MainActivity : AppCompatActivity() {
                 if(username.text.toString() == "user" && password.text.toString() == "Password@1")
                 {
                     Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
-                    setContentView(R.layout.selection_page)
+                    //setContentView(R.layout.selection_page)
+                    val intent = Intent(this,SelectPage::class.java)
+                    startActivity(intent)
                 }
                 else
                 {
