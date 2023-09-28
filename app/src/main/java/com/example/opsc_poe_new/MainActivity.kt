@@ -24,13 +24,20 @@ class MainActivity : AppCompatActivity() {
         password = findViewById(R.id.password)
         loginButton = findViewById(R.id.loginButton)
 
-        if(loginButton.isActivated)
-        {
-            if(username.text.toString() = "user")
-            {
-                setContentView(R.layout.selection_page)
-            }
-        }
+            loginButton.setOnClickListener({
+                if(username.text.toString() == "user" && password.text.toString() == "Password@1")
+                {
+                    Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
+                    setContentView(R.layout.selection_page)
+                }
+                else
+                {
+                    Toast.makeText(this, "Login Failed", Toast.LENGTH_SHORT).show()
+                }
+
+            })
+
+
 
     }
 }
