@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DailyGoals">
+
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Goal Settings"
+        android:textSize="24sp"
+        android:textColor="@android:color/black"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="24dp"/>
+
+    <!-- Minimum Goal -->
+    <EditText
+        android:id="@+id/editTextMinGoal"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="Minimum Daily Goal"
+        android:inputType="numberDecimal"
+        android:layout_below="@id/titleTextView"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="12dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"/>
+
+    <!-- Maximum Goal -->
+    <EditText
+        android:id="@+id/editTextMaxGoal"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="Maximum Daily Goal"
+        android:inputType="numberDecimal"
+        android:layout_below="@id/editTextMinGoal"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"/>
+
+    <!-- Save Button -->
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        android:background="@color/purple_200"
+        android:textColor="@android:color/white"
+        android:layout_below="@id/editTextMaxGoal"
+        android:layout_marginHorizontal="150dp"
+        android:layout_marginTop="16dp"/>
+
+    <Button
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        android:background="@color/purple_200"
+        android:textColor="@android:color/white"
+        android:layout_below="@id/editTextMaxGoal"
+        android:layout_marginHorizontal="150dp"
+        android:layout_marginTop="70dp"/>
+</RelativeLayout>
