@@ -140,9 +140,9 @@
         android:layout_height="wrap_content"
         android:text="Back"
         android:id="@+id/CatBackBtn"
-        android:layout_marginTop="125dp"
         android:gravity="center"
-        android:layout_marginHorizontal="160dp">
+        android:translationX="165dp"
+        android:translationY="130dp">
     </Button>
 
 </RelativeLayout>
