@@ -7,6 +7,12 @@
     android:gravity="center"
     android:background="@color/white">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:text="Username = User. / Password = 1234"
+        android:gravity="center"
+        />
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
