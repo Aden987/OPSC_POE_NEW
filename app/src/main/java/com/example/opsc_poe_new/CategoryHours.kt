@@ -19,9 +19,9 @@ class CategoryHours : AppCompatActivity() {
         val Overtime = findViewById(R.id.Overtime2) as TextView
         catBackBtn = findViewById(R.id.CatBackBtn)
 
-        Per.text = (getIntent().getIntExtra("personalTime", 0) * 0.5).toString()
-        Work.text = (getIntent().getIntExtra("workTime", 0) * 0.5).toString()
-        Overtime.text = (getIntent().getIntExtra("overTime", 0) * 0.5).toString()
+        Per.text = getIntent().getIntExtra("personalTime", 0).toString()
+        Work.text = getIntent().getIntExtra("workTime", 0).toString()
+        Overtime.text = getIntent().getIntExtra("overTime", 0).toString()
 
         catBackBtn!!.setOnClickListener({
             //setContentView()
