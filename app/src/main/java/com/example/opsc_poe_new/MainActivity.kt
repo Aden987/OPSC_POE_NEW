@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         loginButton = findViewById(R.id.loginButton)
 
             loginButton.setOnClickListener({
-                if(username.text.toString() == "user" && password.text.toString() == "Password@1")
+                if(username.text.toString() == "user" && password.text.toString() == "1234")
                 {
                     Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show()
                     //setContentView(R.layout.selection_page)

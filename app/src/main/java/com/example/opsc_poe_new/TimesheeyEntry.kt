@@ -7,6 +7,7 @@ import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
@@ -16,12 +17,47 @@ import android.widget.TextView
 
 class TimesheeyEntry : AppCompatActivity() {
     var dialog: Dialog? = null
+    var dialog2: Dialog? = null
     var editText: EditText? = null
     var delete_subject: Button? = null
     var add_subject: Button? = null
+    var viewCat: Button? = null
+    var viewEnt: Button? = null
+    var tBack: Button? = null
     var timetable_subject: String? = null
+    var cTxt: String? = null
+    var globalVariable = GlobalClass();
     private lateinit var photoImageView: ImageView
     private lateinit var addPhotoButton: Button
+    var categoryText: EditText? = null
+    var dateText: EditText? = null
+    public var p: Int? = 0
+    public var o: Int? = 0
+    public var w: Int? = 0
+
+    //Entry Table
+    public var entryCounter: Int? = 1
+    var ent1: String? = null
+    var ent2: String? = null
+    var ent3: String? = null
+    var ent4: String? = null
+    var ent5: String? = null
+    var ent6: String? = null
+
+    public var cat1: String? = null
+    var cat2: String? = null
+    var cat3: String? = null
+    var cat4: String? = null
+    var cat5: String? = null
+    var cat6: String? = null
+
+    public var dat1: String? = null
+    var dat2: String? = null
+    var dat3: String? = null
+    var dat4: String? = null
+    var dat5: String? = null
+    var dat6: String? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.timesheet)
@@ -31,12 +67,20 @@ class TimesheeyEntry : AppCompatActivity() {
             ViewGroup.LayoutParams.WRAP_CONTENT,
             ViewGroup.LayoutParams.WRAP_CONTENT
         )
+        dialog2 = Dialog(this@TimesheeyEntry)
+        dialog2!!.setContentView(R.layout.total_categories);
 
+        viewCat = findViewById(R.id.viewCatergory)
+        viewEnt = findViewById(R.id.viewEntries)
+        tBack = findViewById(R.id.back_btn)
         editText= dialog!!.findViewById(R.id.po);
         add_subject= dialog!!.findViewById(R.id.add_subject);
         delete_subject= dialog!!.findViewById(R.id.delete_subject);
         photoImageView = dialog!!.findViewById(R.id.photoImageView)
         addPhotoButton = dialog!!.findViewById(R.id.addPhotoButton)
+        categoryText = dialog!!.findViewById(R.id.categorie)
+        dateText = dialog!!.findViewById(R.id.date)
+
 
         addPhotoButton.setOnClickListener(View.OnClickListener {
             // Create an Intent to open the camera or gallery
@@ -114,82 +158,126 @@ class TimesheeyEntry : AppCompatActivity() {
         val Sat8 = findViewById(R.id.Saturday8) as TextView
         val Sat9 = findViewById(R.id.Saturday9) as TextView
 
+
         //Sun1.setOnClickListener(View.OnClickListener { show(Sun1, "Saturday3") })
-        Sun1.setOnClickListener(View.OnClickListener { show(Sun1, "Sunday1") })
-        Sun2.setOnClickListener(View.OnClickListener { show(Sun2, "Sunday2") })
-        Sun3.setOnClickListener(View.OnClickListener { show(Sun3, "Sunday3") })
-        Sun4.setOnClickListener(View.OnClickListener { show(Sun4, "Sunday4") })
-        Sun5.setOnClickListener(View.OnClickListener { show(Sun5, "Sunday5") })
-        Sun6.setOnClickListener(View.OnClickListener { show(Sun6, "Sunday6") })
-        Sun7.setOnClickListener(View.OnClickListener { show(Sun7, "Sunday7") })
-        Sun8.setOnClickListener(View.OnClickListener { show(Sun8, "Sunday8") })
-        Sun9.setOnClickListener(View.OnClickListener { show(Sun9, "Sunday9") })
+        Sun1.setOnClickListener(View.OnClickListener { show(Sun1, "Sunday1", categoryText ,dateText) })
+        Sun2.setOnClickListener(View.OnClickListener { show(Sun2, "Sunday2", categoryText!!,dateText) })
+        Sun3.setOnClickListener(View.OnClickListener { show(Sun3, "Sunday3",categoryText!!,dateText) })
+        Sun4.setOnClickListener(View.OnClickListener { show(Sun4, "Sunday4",categoryText!!,dateText) })
+        Sun5.setOnClickListener(View.OnClickListener { show(Sun5, "Sunday5",categoryText!!,dateText) })
+        Sun6.setOnClickListener(View.OnClickListener { show(Sun6, "Sunday6",categoryText!!,dateText) })
+        Sun7.setOnClickListener(View.OnClickListener { show(Sun7, "Sunday7",categoryText!!,dateText) })
+        Sun8.setOnClickListener(View.OnClickListener { show(Sun8, "Sunday8",categoryText!!,dateText) })
+        Sun9.setOnClickListener(View.OnClickListener { show(Sun9, "Sunday9",categoryText!!,dateText) })
 
-        Mon1.setOnClickListener(View.OnClickListener { show(Mon1, "Monday1") })
-        Mon2.setOnClickListener(View.OnClickListener { show(Mon2, "Monday2") })
-        Mon3.setOnClickListener(View.OnClickListener { show(Mon3, "Monday3") })
-        Mon4.setOnClickListener(View.OnClickListener { show(Mon4, "Monday4") })
-        Mon5.setOnClickListener(View.OnClickListener { show(Mon5, "Monday5") })
-        Mon6.setOnClickListener(View.OnClickListener { show(Mon6, "Monday6") })
-        Mon7.setOnClickListener(View.OnClickListener { show(Mon7, "Monday7") })
-        Mon8.setOnClickListener(View.OnClickListener { show(Mon8, "Monday8") })
-        Mon9.setOnClickListener(View.OnClickListener { show(Mon9, "Monday9") })
-
-
-        Tue1.setOnClickListener(View.OnClickListener { show(Tue1, "Tuesday1") })
-        Tue2.setOnClickListener(View.OnClickListener { show(Tue2, "Tuesday2") })
-        Tue3.setOnClickListener(View.OnClickListener { show(Tue3, "Tuesday3") })
-        Tue4.setOnClickListener(View.OnClickListener { show(Tue4, "Tuesday4") })
-        Tue5.setOnClickListener(View.OnClickListener { show(Tue5, "Tuesday5") })
-        Tue6.setOnClickListener(View.OnClickListener { show(Tue6, "Tuesday6") })
-        Tue7.setOnClickListener(View.OnClickListener { show(Tue7, "Tuesday7") })
-        Tue8.setOnClickListener(View.OnClickListener { show(Tue8, "Tuesday8") })
-        Tue9.setOnClickListener(View.OnClickListener { show(Tue9, "Tuesday9") })
+        Mon1.setOnClickListener(View.OnClickListener { show(Mon1, "Monday1",categoryText!!,dateText) })
+        Mon2.setOnClickListener(View.OnClickListener { show(Mon2, "Monday2",categoryText!!,dateText) })
+        Mon3.setOnClickListener(View.OnClickListener { show(Mon3, "Monday3",categoryText!!,dateText) })
+        Mon4.setOnClickListener(View.OnClickListener { show(Mon4, "Monday4",categoryText!!,dateText) })
+        Mon5.setOnClickListener(View.OnClickListener { show(Mon5, "Monday5",categoryText!!,dateText) })
+        Mon6.setOnClickListener(View.OnClickListener { show(Mon6, "Monday6",categoryText!!,dateText) })
+        Mon7.setOnClickListener(View.OnClickListener { show(Mon7, "Monday7",categoryText!!,dateText) })
+        Mon8.setOnClickListener(View.OnClickListener { show(Mon8, "Monday8",categoryText!!,dateText) })
+        Mon9.setOnClickListener(View.OnClickListener { show(Mon9, "Monday9",categoryText!!,dateText) })
 
 
-        Wed1.setOnClickListener(View.OnClickListener { show(Wed1, "Wednesday1") })
-        Wed2.setOnClickListener(View.OnClickListener { show(Wed2, "Wednesday2") })
-        Wed3.setOnClickListener(View.OnClickListener { show(Wed3, "Wednesday3") })
-        Wed4.setOnClickListener(View.OnClickListener { show(Wed4, "Wednesday4") })
-        Wed5.setOnClickListener(View.OnClickListener { show(Wed5, "Wednesday5") })
-        Wed6.setOnClickListener(View.OnClickListener { show(Wed6, "Wednesday6") })
-        Wed7.setOnClickListener(View.OnClickListener { show(Wed7, "Wednesday7") })
-        Wed8.setOnClickListener(View.OnClickListener { show(Wed8, "Wednesday8") })
-        Wed9.setOnClickListener(View.OnClickListener { show(Wed9, "Wednesday9") })
+        Tue1.setOnClickListener(View.OnClickListener { show(Tue1, "Tuesday1",categoryText!!,dateText) })
+        Tue2.setOnClickListener(View.OnClickListener { show(Tue2, "Tuesday2",categoryText!!,dateText) })
+        Tue3.setOnClickListener(View.OnClickListener { show(Tue3, "Tuesday3",categoryText!!,dateText) })
+        Tue4.setOnClickListener(View.OnClickListener { show(Tue4, "Tuesday4",categoryText!!,dateText) })
+        Tue5.setOnClickListener(View.OnClickListener { show(Tue5, "Tuesday5",categoryText!!,dateText) })
+        Tue6.setOnClickListener(View.OnClickListener { show(Tue6, "Tuesday6",categoryText!!,dateText) })
+        Tue7.setOnClickListener(View.OnClickListener { show(Tue7, "Tuesday7",categoryText!!,dateText) })
+        Tue8.setOnClickListener(View.OnClickListener { show(Tue8, "Tuesday8",categoryText!!,dateText) })
+        Tue9.setOnClickListener(View.OnClickListener { show(Tue9, "Tuesday9",categoryText!!,dateText) })
 
 
-        Thu1.setOnClickListener(View.OnClickListener { show(Thu1, "Thursday1") })
-        Thu2.setOnClickListener(View.OnClickListener { show(Thu2, "Thursday2") })
-        Thu3.setOnClickListener(View.OnClickListener { show(Thu3, "Thursday3") })
-        Thu4.setOnClickListener(View.OnClickListener { show(Thu4, "Thursday4") })
-        Thu5.setOnClickListener(View.OnClickListener { show(Thu5, "Thursday5") })
-        Thu6.setOnClickListener(View.OnClickListener { show(Thu6, "Thursday6") })
-        Thu7.setOnClickListener(View.OnClickListener { show(Thu7, "Thursday7") })
-        Thu8.setOnClickListener(View.OnClickListener { show(Thu8, "Thursday8") })
-        Thu9.setOnClickListener(View.OnClickListener { show(Thu9, "Thursday9") })
+        Wed1.setOnClickListener(View.OnClickListener { show(Wed1, "Wednesday1",categoryText!!,dateText) })
+        Wed2.setOnClickListener(View.OnClickListener { show(Wed2, "Wednesday2",categoryText!!,dateText) })
+        Wed3.setOnClickListener(View.OnClickListener { show(Wed3, "Wednesday3",categoryText!!,dateText) })
+        Wed4.setOnClickListener(View.OnClickListener { show(Wed4, "Wednesday4",categoryText!!,dateText) })
+        Wed5.setOnClickListener(View.OnClickListener { show(Wed5, "Wednesday5",categoryText!!,dateText) })
+        Wed6.setOnClickListener(View.OnClickListener { show(Wed6, "Wednesday6",categoryText!!,dateText) })
+        Wed7.setOnClickListener(View.OnClickListener { show(Wed7, "Wednesday7",categoryText!!,dateText) })
+        Wed8.setOnClickListener(View.OnClickListener { show(Wed8, "Wednesday8",categoryText!!,dateText) })
+        Wed9.setOnClickListener(View.OnClickListener { show(Wed9, "Wednesday9",categoryText!!,dateText) })
 
 
-        Fri1.setOnClickListener(View.OnClickListener { show(Fri1, "Friday1") })
-        Fri2.setOnClickListener(View.OnClickListener { show(Fri2, "Friday2") })
-        Fri3.setOnClickListener(View.OnClickListener { show(Fri3, "Friday3") })
-        Fri4.setOnClickListener(View.OnClickListener { show(Fri4, "Friday4") })
-        Fri5.setOnClickListener(View.OnClickListener { show(Fri5, "Friday5") })
-        Fri6.setOnClickListener(View.OnClickListener { show(Fri6, "Friday6") })
-        Fri7.setOnClickListener(View.OnClickListener { show(Fri7, "Friday7") })
-        Fri8.setOnClickListener(View.OnClickListener { show(Fri8, "Friday8") })
-        Fri9.setOnClickListener(View.OnClickListener { show(Fri9, "Friday9") })
+        Thu1.setOnClickListener(View.OnClickListener { show(Thu1, "Thursday1",categoryText!!,dateText) })
+        Thu2.setOnClickListener(View.OnClickListener { show(Thu2, "Thursday2",categoryText!!,dateText) })
+        Thu3.setOnClickListener(View.OnClickListener { show(Thu3, "Thursday3",categoryText!!,dateText) })
+        Thu4.setOnClickListener(View.OnClickListener { show(Thu4, "Thursday4",categoryText!!,dateText) })
+        Thu5.setOnClickListener(View.OnClickListener { show(Thu5, "Thursday5",categoryText!!,dateText) })
+        Thu6.setOnClickListener(View.OnClickListener { show(Thu6, "Thursday6",categoryText!!,dateText) })
+        Thu7.setOnClickListener(View.OnClickListener { show(Thu7, "Thursday7",categoryText!!,dateText) })
+        Thu8.setOnClickListener(View.OnClickListener { show(Thu8, "Thursday8",categoryText!!,dateText) })
+        Thu9.setOnClickListener(View.OnClickListener { show(Thu9, "Thursday9",categoryText!!,dateText) })
 
 
-        Sat1.setOnClickListener(View.OnClickListener { show(Sat1, "Saturday1") })
-        Sat2.setOnClickListener(View.OnClickListener { show(Sat2, "Saturday2") })
-        Sat3.setOnClickListener(View.OnClickListener { show(Sat3, "Saturday3") })
-        Sat4.setOnClickListener(View.OnClickListener { show(Sat4, "Saturday4") })
-        Sat5.setOnClickListener(View.OnClickListener { show(Sat5, "Saturday5") })
-        Sat6.setOnClickListener(View.OnClickListener { show(Sat6, "Saturday6") })
-        Sat7.setOnClickListener(View.OnClickListener { show(Sat7, "Saturday7") })
-        Sat8.setOnClickListener(View.OnClickListener { show(Sat8, "Saturday8") })
-        Sat9.setOnClickListener(View.OnClickListener { show(Sat9, "Saturday9") })
+        Fri1.setOnClickListener(View.OnClickListener { show(Fri1, "Friday1",categoryText!!,dateText) })
+        Fri2.setOnClickListener(View.OnClickListener { show(Fri2, "Friday2",categoryText!!,dateText) })
+        Fri3.setOnClickListener(View.OnClickListener { show(Fri3, "Friday3",categoryText!!,dateText) })
+        Fri4.setOnClickListener(View.OnClickListener { show(Fri4, "Friday4",categoryText!!,dateText) })
+        Fri5.setOnClickListener(View.OnClickListener { show(Fri5, "Friday5",categoryText!!,dateText) })
+        Fri6.setOnClickListener(View.OnClickListener { show(Fri6, "Friday6",categoryText!!,dateText) })
+        Fri7.setOnClickListener(View.OnClickListener { show(Fri7, "Friday7",categoryText!!,dateText) })
+        Fri8.setOnClickListener(View.OnClickListener { show(Fri8, "Friday8",categoryText!!,dateText) })
+        Fri9.setOnClickListener(View.OnClickListener { show(Fri9, "Friday9",categoryText!!,dateText) })
+
+
+        Sat1.setOnClickListener(View.OnClickListener { show(Sat1, "Saturday1",categoryText!!,dateText) })
+        Sat2.setOnClickListener(View.OnClickListener { show(Sat2, "Saturday2",categoryText!!,dateText) })
+        Sat3.setOnClickListener(View.OnClickListener { show(Sat3, "Saturday3",categoryText!!,dateText) })
+        Sat4.setOnClickListener(View.OnClickListener { show(Sat4, "Saturday4",categoryText!!,dateText) })
+        Sat5.setOnClickListener(View.OnClickListener { show(Sat5, "Saturday5",categoryText!!,dateText) })
+        Sat6.setOnClickListener(View.OnClickListener { show(Sat6, "Saturday6",categoryText!!,dateText) })
+        Sat7.setOnClickListener(View.OnClickListener { show(Sat7, "Saturday7",categoryText!!,dateText) })
+        Sat8.setOnClickListener(View.OnClickListener { show(Sat8, "Saturday8",categoryText!!,dateText) })
+        Sat9.setOnClickListener(View.OnClickListener { show(Sat9, "Saturday9",categoryText!!,dateText) })
+
+
+        viewCat!!.setOnClickListener({
+            //setContentView(R.layout)
+            val intent = Intent(this,CategoryHours::class.java)
+            intent.putExtra("personalTime", p)
+            intent.putExtra("workTime", w)
+            intent.putExtra("overTime", o)
+            startActivity(intent)
+        })
+        viewEnt!!.setOnClickListener({
+            //setContentView(R.layout)
+            val intent = Intent(this,EntryTable::class.java)
+            intent.putExtra("e1", ent1)
+            intent.putExtra("d1", dat1)
+            intent.putExtra("c1", cat1)
+            intent.putExtra("e2", ent2)
+            intent.putExtra("d2", dat2)
+            intent.putExtra("c2", cat2)
+
+            intent.putExtra("e3", ent3)
+            intent.putExtra("d3", dat3)
+            intent.putExtra("c3", cat3)
+
+            intent.putExtra("e4", ent4)
+            intent.putExtra("d4", dat4)
+            intent.putExtra("c4", cat4)
+
+            intent.putExtra("e5", ent5)
+            intent.putExtra("d5", dat5)
+            intent.putExtra("c5", cat5)
+
+            intent.putExtra("e6", ent6)
+            intent.putExtra("d6", dat6)
+            intent.putExtra("c6", cat6)
+            startActivity(intent)
+        })
+        tBack!!.setOnClickListener({
+            //setContentView(R.layout)
+            val intent = Intent(this,SelectPage::class.java)
+            startActivity(intent)
+        })
     }
+
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -208,11 +296,17 @@ class TimesheeyEntry : AppCompatActivity() {
         private const val IMAGE_PICK_REQUEST_CODE = 1001
     }
 
-    fun show(textView: TextView?, dayname: String?) {
+    fun show(textView: TextView?, dayname: String?, catView: EditText?, datView: EditText?) {
         timetable_subject = null
         dialog!!.show()
+        var e: String
+        var c: String
+        var d: String
         add_subject!!.setOnClickListener {
             timetable_subject = editText!!.text.toString()
+            e = editText!!.text.toString()
+            c = catView!!.text.toString()
+            d = datView!!.text.toString()
             if (timetable_subject!!.isEmpty()) {
                 editText!!.requestFocus()
                 editText!!.error = "field is empty"
@@ -221,6 +315,62 @@ class TimesheeyEntry : AppCompatActivity() {
                 //values.put(dayname, timetable_subject);
                 //databaseStudents.child(user.getUid()).updateChildren(values);
                 textView!!.text = timetable_subject
+
+                //catView!!.text = cTxt
+                if (catView!!.text.toString() == "personal")
+                {
+                    p = p!! + 1
+                }
+                if (catView!!.text.toString() == "work")
+                {
+                    w = w!! + 1
+                }
+                if (catView!!.text.toString() == "overtime")
+                {
+                    o = o!! + 1
+                }
+                if (entryCounter == 1)
+                {
+                    ent1 = textView!!.text.toString()
+                    cat1= catView!!.text.toString()
+                    dat1= datView!!.text.toString()
+                    //entryCounter = entryCounter!! + 1
+                }
+                if (entryCounter == 2)
+                {
+                    ent2 = textView!!.text.toString()
+                    cat2 = catView!!.text.toString()
+                    dat2 = datView!!.text.toString()
+                }
+                if (entryCounter == 3)
+                {
+                    ent3 = textView!!.text.toString()
+                    cat3= catView!!.text.toString()
+                    dat3= datView!!.text.toString()
+                }
+                if (entryCounter == 4)
+                {
+                    ent4 = textView!!.text.toString()
+                    cat4= catView!!.text.toString()
+                    dat4= datView!!.text.toString()
+                }
+                if (entryCounter == 5)
+                {
+                    ent5 = textView!!.text.toString()
+                    cat5= catView!!.text.toString()
+                    dat5= datView!!.text.toString()
+                }
+                if (entryCounter == 6)
+                {
+                    ent6 = textView!!.text.toString()
+                    cat6= catView!!.text.toString()
+                    dat6 = datView!!.text.toString()
+                }
+                entryCounter = entryCounter!! + 1
+                if (entryCounter == 7)
+                {
+                    entryCounter = 0
+                }
                 editText!!.setText("")
                 dialog!!.dismiss()
             }
@@ -230,4 +380,9 @@ class TimesheeyEntry : AppCompatActivity() {
             dialog!!.dismiss()
         }
     }
+
+    /*fun personalCat(textView: TextView?)
+    {
+        textView!!.text = (personalTime?.times(0.5f)).toString()
+    }*/
 }
