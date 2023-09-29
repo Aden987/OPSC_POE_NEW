@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="40dp"
+        android:background="@android:color/white">
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:gravity="center_vertical"
+
+            android:layout_weight="1"
+            android:background="@color/green"
+            >
+            <TextView
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:layout_marginBottom="1dp"
+                android:layout_marginHorizontal="1dp"
+                android:text="Category Type"/>
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:layout_marginBottom="1dp"
+                android:layout_marginHorizontal="1dp"
+                android:text="Total Hours"/>
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:gravity="center_vertical"
+
+            android:layout_weight="1"
+            >
+            <TextView
+                android:id="@+id/Personal1"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+
+                android:gravity="center"
+                android:background="@drawable/edit_text_background"
+                android:layout_marginBottom="1dp"
+                android:layout_marginHorizontal="1dp"
+                android:text="Personal"/>
+            <TextView
+                android:id="@+id/Personal2"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+
+                android:gravity="center"
+                android:background="@drawable/edit_text_background"
+                android:layout_marginBottom="1dp"
+                android:layout_marginHorizontal="1dp"
+                android:text="0"/>
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:gravity="center_vertical"
+
+            android:layout_weight="1"
+            >
+            <TextView
+                android:id="@+id/Work1"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+
+                android:gravity="center"
+                android:background="@drawable/edit_text_background"
+                android:layout_marginBottom="1dp"
+                android:layout_marginHorizontal="1dp"
+                android:text="Work"/>
+            <TextView
+                android:id="@+id/Work2"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+
+                android:gravity="center"
+                android:background="@drawable/edit_text_background"
+                android:layout_marginBottom="1dp"
+                android:layout_marginHorizontal="1dp"
+                android:text="0"/>
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:gravity="center_vertical"
+
+            android:layout_weight="1"
+            >
+            <TextView
+                android:id="@+id/Overtime1"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+
+                android:gravity="center"
+                android:background="@drawable/edit_text_background"
+                android:layout_marginBottom="1dp"
+                android:layout_marginHorizontal="1dp"
+                android:text="Overtime"/>
+            <TextView
+                android:id="@+id/Overtime2"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+
+                android:gravity="center"
+                android:background="@drawable/edit_text_background"
+                android:layout_marginBottom="1dp"
+                android:layout_marginHorizontal="1dp"
+                android:text="0"/>
+        </TableRow>
+    </TableLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        android:id="@+id/CatBackBtn"
+        android:layout_marginTop="125dp"
+        android:gravity="center"
+        android:layout_marginHorizontal="160dp">
+    </Button>
+
+</RelativeLayout>

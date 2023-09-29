@@ -1250,6 +1250,16 @@
 
         </TableRow>
     </TableLayout>
+    <Button
+        android:id="@+id/viewCatergory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="380dp"
+        android:text="View Category">
+    </Button>
         <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -1266,5 +1276,4 @@
             android:text="back">
         </Button>
     </LinearLayout>
-
 </RelativeLayout>
