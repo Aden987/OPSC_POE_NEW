@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="20dp"
-        android:text="Username = User. / Password = 1234"
+        android:text="Username = user. / Password = 1234"
         android:gravity="center"
         />
 
