@@ -317,15 +317,15 @@ class TimesheeyEntry : AppCompatActivity() {
                 textView!!.text = timetable_subject
 
                 //catView!!.text = cTxt
-                if (catView!!.text.toString() == "personal")
+                if (catView!!.text.toString() == "personal" || catView!!.text.toString() == "Personal")
                 {
                     p = p!! + 1
                 }
-                if (catView!!.text.toString() == "work")
+                if (catView!!.text.toString() == "work" || catView!!.text.toString() == "Work")
                 {
                     w = w!! + 1
                 }
-                if (catView!!.text.toString() == "overtime")
+                if (catView!!.text.toString() == "overtime" || catView!!.text.toString() == "Overtime")
                 {
                     o = o!! + 1
                 }
