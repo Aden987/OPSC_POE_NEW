@@ -10,6 +10,7 @@ class SelectPage : AppCompatActivity() {
 
     lateinit var  timesheetBtn : Button
     lateinit var  dailyGoalBtn : Button
+    lateinit var  aBtn : Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.selection_page)
@@ -21,6 +22,12 @@ class SelectPage : AppCompatActivity() {
         dailyGoalBtn = findViewById(R.id.goalBtn)
         dailyGoalBtn.setOnClickListener({
             val intent = Intent(this,DailyGoal::class.java)
+            startActivity(intent)}
+        )
+
+        aBtn = findViewById(R.id.ach)
+        aBtn.setOnClickListener({
+            val intent = Intent(this,TimesheetGraph::class.java)
             startActivity(intent)}
         )
     }
