@@ -6,9 +6,29 @@
     android:layout_height="match_parent"
     tools:context=".TimesheetGraph">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="125dp"
+        android:layout_marginTop="15dp"
+        android:text="Timesheet Graph"
+        android:textSize="20dp"></TextView>
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:translationX="-230dp"
+        android:layout_marginTop="40dp"
+        android:text="Days"
+        ></TextView>
+
     <com.github.mikephil.charting.charts.LineChart
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/lineChart"/>
+        android:id="@+id/lineChart"
+        android:layout_width="310dp"
+        android:layout_height="210dp"
+        android:translationX="-430dp"
+        android:layout_marginTop="150dp" />
+
+
 
 </LinearLayout>
