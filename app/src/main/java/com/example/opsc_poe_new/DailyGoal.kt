@@ -7,9 +7,13 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 class DailyGoal : AppCompatActivity() {
     lateinit var  BackButton : Button
+    private lateinit var database: DatabaseReference
+    lateinit var  dataname : String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_daily_goal)
@@ -18,6 +22,7 @@ class DailyGoal : AppCompatActivity() {
         val minGoalEditText = findViewById<EditText>(R.id.editTextMinGoal)
         val maxGoalEditText = findViewById<EditText>(R.id.editTextMaxGoal)
         val saveButton = findViewById<Button>(R.id.saveButton)
+        dataname = "minmaxgoals"
 
         // Retrieve user's goals from SharedPreferences
         val minGoal = sharedPreferences.getFloat("minGoal", 0.0f)
@@ -49,7 +54,14 @@ class DailyGoal : AppCompatActivity() {
                 editor.apply()
 
                 // Notify the user that the goals are saved
-                Toast.makeText(this, "Goals saved successfully.", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(this, "Goals saved successfully.", Toast.LENGTH_SHORT).show()
+                database = FirebaseDatabase.getInstance().getReference("Goals")
+                val Goals = Goals(minGoalValue,maxGoalValue,dataname)
+                database.child(dataname).setValue(Goals).addOnSuccessListener {
+                    Toast.makeText(this, "Successfully Saved.", Toast.LENGTH_SHORT).show()
+                }.addOnFailureListener{
+                    Toast.makeText(this, "Failed to save.", Toast.LENGTH_SHORT).show()
+                }
             }
         }
         BackButton = findViewById(R.id.back)
