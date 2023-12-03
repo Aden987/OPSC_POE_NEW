@@ -1,6 +1,7 @@
 package com.example.opsc_poe_new
 
 import android.os.Bundle
+import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.github.mikephil.charting.charts.LineChart
@@ -8,8 +9,11 @@ import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 
 class TimesheetGraph : AppCompatActivity() {
@@ -23,10 +27,15 @@ class TimesheetGraph : AppCompatActivity() {
     val lineentry = ArrayList<Entry>()
     val xvalue = ArrayList<String>()
     val finaldataset = ArrayList<LineDataSet>()
+    lateinit var backButton: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_timesheet_graph)
         lineChart = findViewById(R.id.lineChart)
+        backButton = findViewById(R.id.back_btn)
+        backButton.setOnClickListener({
+            deleteMonEntries()
+        })
         setLineChartData()
     }
 
@@ -81,35 +90,20 @@ class TimesheetGraph : AppCompatActivity() {
         xvalue.add("Fri")
         xvalue.add("Sat")
 
-
-        lineentry.add(Entry(1.5f, 0))
-        lineentry.add(Entry(3.5f,1))
-        lineentry.add(Entry(8.5f,2))
-        lineentry.add(Entry(4.5f,3))
-        lineentry.add(Entry(5.5f,4))
-
-
-        /*database = FirebaseDatabase.getInstance().getReference("Goals")
-        database.child("minmaxgoals").get().addOnSuccessListener {
-            val mingoalSnapshot = it.child("minGoal").getValue(Float::class.java)
-            floatValue = mingoalSnapshot
-
-            Toast.makeText(this, "Successfully read min goals " , Toast.LENGTH_SHORT).show()
+        countSunEntries()
+        countMonEntries()
+        countTueEntries()
+        countWedEntries()
+        countThursEntries()
+        countFriEntries()
+        countSatEntries()
 
 
-        }.addOnFailureListener{
-            Toast.makeText(this, "Failed to read min goals", Toast.LENGTH_SHORT).show()
-        }
+        /*lineentry.add(Entry(1.5f,1))
+        lineentry.add(Entry(1.5f,2))
+        lineentry.add(Entry(1.5f,3))
+        lineentry.add(Entry(1.5f,4))*/
 
-        //min Goals
-
-        lineentry1.add(Entry(floatValue!!.toFloat(), 0))
-        lineentry1.add(Entry(1.5f, 1))
-        lineentry1.add(Entry(1.5f ,2))
-        lineentry1.add(Entry(1.5f,3))
-        lineentry1.add(Entry(1.5f,4))
-        lineentry1.add(Entry(1.5f,5))
-        lineentry1.add(Entry(1.5f,6))*/
 
         val database = FirebaseDatabase.getInstance().getReference("Goals")
         database.child("minmaxgoals").get().addOnSuccessListener { dataSnapshot ->
@@ -152,22 +146,6 @@ class TimesheetGraph : AppCompatActivity() {
             Toast.makeText(this, "Failed to read min goals", Toast.LENGTH_SHORT).show()
         }
 
-
-
-        //val linedataset = LineDataSet(lineentry, "First")
-        //linedataset.color = resources.getColor(R.color.green)
-
-        //val linedataset1 = LineDataSet(lineentry1, "Second")
-        //linedataset.color = resources.getColor(R.color.blue)
-
-        //val finaldataset = ArrayList<LineDataSet>()
-        //finaldataset.add(linedataset)
-        //finaldataset.add(linedataset1)
-
-
-
-        //val data = LineData(xvalue, finaldataset as List<ILineDataSet>?)
-        // lineChart?.data = data
     }
 
     private fun updateMinLineChart(floatValue: Float) {
@@ -248,5 +226,168 @@ class TimesheetGraph : AppCompatActivity() {
 
         // Refresh the chart
         lineChart.invalidate()
+    }
+
+    private fun countSunEntries() {
+        val database: FirebaseDatabase = FirebaseDatabase.getInstance()
+        val reference: DatabaseReference = database.getReference("Sun")
+
+        reference.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                // Get the count of entries
+                val entryCount = dataSnapshot.childrenCount.toFloat()
+                lineentry.add(Entry(entryCount, 0))
+                //println("Number of entries: $entryCount")
+
+                // Now you have the count, you can use it as needed
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Handle errors here
+                println("Failed to count entries: ${databaseError.message}")
+            }
+
+        })
+    }
+    private fun countMonEntries() {
+        val database: FirebaseDatabase = FirebaseDatabase.getInstance()
+        val reference: DatabaseReference = database.getReference("Mon")
+
+        reference.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                // Get the count of entries
+                val entryCount = dataSnapshot.childrenCount.toFloat()
+                lineentry.add(Entry(entryCount, 1))
+                //println("Number of entries: $entryCount")
+
+                // Now you have the count, you can use it as needed
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Handle errors here
+                println("Failed to count entries: ${databaseError.message}")
+            }
+
+        })
+    }
+    private fun countTueEntries() {
+        val database: FirebaseDatabase = FirebaseDatabase.getInstance()
+        val reference: DatabaseReference = database.getReference("Tue")
+
+        reference.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                // Get the count of entries
+                val entryCount = dataSnapshot.childrenCount.toFloat()
+                lineentry.add(Entry(entryCount, 2))
+                //println("Number of entries: $entryCount")
+
+                // Now you have the count, you can use it as needed
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Handle errors here
+                println("Failed to count entries: ${databaseError.message}")
+            }
+
+        })
+    }
+    private fun countWedEntries() {
+        val database: FirebaseDatabase = FirebaseDatabase.getInstance()
+        val reference: DatabaseReference = database.getReference("Wed")
+
+        reference.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                // Get the count of entries
+                val entryCount = dataSnapshot.childrenCount.toFloat()
+                lineentry.add(Entry(entryCount, 3))
+                //println("Number of entries: $entryCount")
+
+                // Now you have the count, you can use it as needed
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Handle errors here
+                println("Failed to count entries: ${databaseError.message}")
+            }
+
+        })
+    }
+    private fun countThursEntries() {
+        val database: FirebaseDatabase = FirebaseDatabase.getInstance()
+        val reference: DatabaseReference = database.getReference("Thurs")
+
+        reference.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                // Get the count of entries
+                val entryCount = dataSnapshot.childrenCount.toFloat()
+                lineentry.add(Entry(entryCount, 4))
+                //println("Number of entries: $entryCount")
+
+                // Now you have the count, you can use it as needed
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Handle errors here
+                println("Failed to count entries: ${databaseError.message}")
+            }
+
+        })
+    }
+    private fun countFriEntries() {
+        val database: FirebaseDatabase = FirebaseDatabase.getInstance()
+        val reference: DatabaseReference = database.getReference("Fri")
+
+        reference.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                // Get the count of entries
+                val entryCount = dataSnapshot.childrenCount.toFloat()
+                lineentry.add(Entry(entryCount, 5))
+                //println("Number of entries: $entryCount")
+
+                // Now you have the count, you can use it as needed
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Handle errors here
+                println("Failed to count entries: ${databaseError.message}")
+            }
+
+        })
+    }
+    private fun countSatEntries() {
+        val database: FirebaseDatabase = FirebaseDatabase.getInstance()
+        val reference: DatabaseReference = database.getReference("Sat")
+
+        reference.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                // Get the count of entries
+                val entryCount = dataSnapshot.childrenCount.toFloat()
+                lineentry.add(Entry(entryCount, 6))
+                //println("Number of entries: $entryCount")
+
+                // Now you have the count, you can use it as needed
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Handle errors here
+                println("Failed to count entries: ${databaseError.message}")
+            }
+
+        })
+    }
+
+    private fun deleteMonEntries() {
+        val database: FirebaseDatabase = FirebaseDatabase.getInstance()
+        val reference: DatabaseReference = database.getReference("Mon")
+
+        reference.removeValue()
+            .addOnSuccessListener {
+                // Deletion successful
+                println("All entries deleted successfully.")
+            }
+            .addOnFailureListener { exception ->
+                // Handle errors here
+                println("Failed to delete entries: ${exception.message}")
+            }
     }
 }
