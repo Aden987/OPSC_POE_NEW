@@ -5,12 +5,15 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import com.google.firebase.Firebase
+import com.google.firebase.database.database
 
 class SelectPage : AppCompatActivity() {
 
     lateinit var  timesheetBtn : Button
     lateinit var  dailyGoalBtn : Button
     lateinit var  aBtn : Button
+    lateinit var  payCalcu : Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.selection_page)
@@ -30,5 +33,12 @@ class SelectPage : AppCompatActivity() {
             val intent = Intent(this,TimesheetGraph::class.java)
             startActivity(intent)}
         )
+
+        payCalcu = findViewById(R.id.payCalc)
+        payCalcu.setOnClickListener({
+            val database = Firebase.database
+            val myRef = database.getReference("message")
+            myRef.setValue("Hello World")
+        })
     }
 }

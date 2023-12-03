@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "975188497581",
+    "project_id": "opscpoenew",
+    "storage_bucket": "opscpoenew.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:975188497581:android:6fe4ce5db9827230ece224",
+        "android_client_info": {
+          "package_name": "com.example.opsc_poe_new"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjUvxgfRp2g6MA9kG4ygYtaU7rm6zA5Kw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

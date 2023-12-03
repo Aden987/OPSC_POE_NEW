@@ -69,6 +69,7 @@
         android:backgroundTint="@color/green"
         android:translationX="80dp"
         android:translationY="-80dp"
+        android:id="@+id/payCalc"
         ></Button>
 
     <Button
