@@ -54,7 +54,7 @@
         android:layout_width="150dp"
         android:layout_height="100dp"
         android:gravity="center"
-        android:text="Achievements"
+        android:text="Line Graph"
         android:backgroundTint="@color/green"
         android:translationX="-80dp"
         android:translationY="20dp"

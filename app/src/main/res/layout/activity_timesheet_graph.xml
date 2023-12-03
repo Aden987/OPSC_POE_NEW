@@ -9,24 +9,40 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="125dp"
-        android:layout_marginTop="15dp"
+        android:translationX="125dp"
+        android:layout_marginTop="60dp"
         android:text="Timesheet Graph"
         android:textSize="20dp"></TextView>
 
     <TextView
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:translationX="-230dp"
-        android:layout_marginTop="40dp"
+        android:translationX="20dp"
+        android:layout_marginTop="100dp"
         android:text="Days"
         ></TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:translationX="-240dp"
+        android:layout_marginTop="230dp"
+        android:text="Hours"
+        ></TextView>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="380dp"
+        android:translationX="-135dp"
+        android:text="Back"
+        android:id="@+id/back_btn"></Button>
 
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/lineChart"
         android:layout_width="310dp"
         android:layout_height="210dp"
-        android:translationX="-430dp"
+        android:translationX="-320dp"
         android:layout_marginTop="150dp" />
 
 
