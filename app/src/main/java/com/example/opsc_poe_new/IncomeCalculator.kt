@@ -1,6 +1,7 @@
 package com.example.opsc_poe_new
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -25,6 +26,7 @@ class IncomeCalculator : AppCompatActivity() {
     private var answerFinal: Double = 0.0
 
     lateinit var calculate : Button
+    //lateinit var backBtn : Button
     lateinit var paymentPerHour: EditText
     lateinit var numberOfHours: EditText
     lateinit var paymentPerHour2: EditText
@@ -58,6 +60,7 @@ class IncomeCalculator : AppCompatActivity() {
         numberOfHours4 = findViewById(R.id.numberofhoursinput4)
 
         result = findViewById(R.id.totalIncomeView)
+        //backBtn = findViewById(R.id.btnBack)
 
         paymentPerHour.setText("0")
         numberOfHours.setText("0")
@@ -95,5 +98,12 @@ class IncomeCalculator : AppCompatActivity() {
 
             result.setText((answerFinal.toString()))
         })
+
+        /*backBtn.setOnClickListener({
+            val intent = Intent(this,SelectPage::class.java)
+            startActivity(intent)
+        })*/
+
+
     }
 }

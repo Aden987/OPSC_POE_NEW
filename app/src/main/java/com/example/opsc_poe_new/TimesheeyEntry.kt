@@ -14,6 +14,9 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 class TimesheeyEntry : AppCompatActivity() {
     var dialog: Dialog? = null
@@ -57,6 +60,10 @@ class TimesheeyEntry : AppCompatActivity() {
     var dat4: String? = null
     var dat5: String? = null
     var dat6: String? = null
+
+    var dataname : String? = null
+    var entryCouner : Int? = null
+    private lateinit var database: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -160,80 +167,80 @@ class TimesheeyEntry : AppCompatActivity() {
 
 
         //Sun1.setOnClickListener(View.OnClickListener { show(Sun1, "Saturday3") })
-        Sun1.setOnClickListener(View.OnClickListener { show(Sun1, "Sunday1", categoryText ,dateText) })
-        Sun2.setOnClickListener(View.OnClickListener { show(Sun2, "Sunday2", categoryText!!,dateText) })
-        Sun3.setOnClickListener(View.OnClickListener { show(Sun3, "Sunday3",categoryText!!,dateText) })
-        Sun4.setOnClickListener(View.OnClickListener { show(Sun4, "Sunday4",categoryText!!,dateText) })
-        Sun5.setOnClickListener(View.OnClickListener { show(Sun5, "Sunday5",categoryText!!,dateText) })
-        Sun6.setOnClickListener(View.OnClickListener { show(Sun6, "Sunday6",categoryText!!,dateText) })
-        Sun7.setOnClickListener(View.OnClickListener { show(Sun7, "Sunday7",categoryText!!,dateText) })
-        Sun8.setOnClickListener(View.OnClickListener { show(Sun8, "Sunday8",categoryText!!,dateText) })
-        Sun9.setOnClickListener(View.OnClickListener { show(Sun9, "Sunday9",categoryText!!,dateText) })
+        Sun1.setOnClickListener(View.OnClickListener { show(Sun1, "Sunday", categoryText ,dateText,"Sunday1") })
+        Sun2.setOnClickListener(View.OnClickListener { show(Sun2, "Sunday", categoryText!!,dateText,"Sunday2") })
+        Sun3.setOnClickListener(View.OnClickListener { show(Sun3, "Sunday",categoryText!!,dateText,"Sunday3") })
+        Sun4.setOnClickListener(View.OnClickListener { show(Sun4, "Sunday",categoryText!!,dateText,"Sunday4") })
+        Sun5.setOnClickListener(View.OnClickListener { show(Sun5, "Sunday",categoryText!!,dateText,"Sunday5") })
+        Sun6.setOnClickListener(View.OnClickListener { show(Sun6, "Sunday",categoryText!!,dateText,"Sunday6") })
+        Sun7.setOnClickListener(View.OnClickListener { show(Sun7, "Sunday",categoryText!!,dateText,"Sunday7") })
+        Sun8.setOnClickListener(View.OnClickListener { show(Sun8, "Sunday",categoryText!!,dateText,"Sunday8") })
+        Sun9.setOnClickListener(View.OnClickListener { show(Sun9, "Sunday",categoryText!!,dateText,"Sunday9") })
 
-        Mon1.setOnClickListener(View.OnClickListener { show(Mon1, "Monday1",categoryText!!,dateText) })
-        Mon2.setOnClickListener(View.OnClickListener { show(Mon2, "Monday2",categoryText!!,dateText) })
-        Mon3.setOnClickListener(View.OnClickListener { show(Mon3, "Monday3",categoryText!!,dateText) })
-        Mon4.setOnClickListener(View.OnClickListener { show(Mon4, "Monday4",categoryText!!,dateText) })
-        Mon5.setOnClickListener(View.OnClickListener { show(Mon5, "Monday5",categoryText!!,dateText) })
-        Mon6.setOnClickListener(View.OnClickListener { show(Mon6, "Monday6",categoryText!!,dateText) })
-        Mon7.setOnClickListener(View.OnClickListener { show(Mon7, "Monday7",categoryText!!,dateText) })
-        Mon8.setOnClickListener(View.OnClickListener { show(Mon8, "Monday8",categoryText!!,dateText) })
-        Mon9.setOnClickListener(View.OnClickListener { show(Mon9, "Monday9",categoryText!!,dateText) })
-
-
-        Tue1.setOnClickListener(View.OnClickListener { show(Tue1, "Tuesday1",categoryText!!,dateText) })
-        Tue2.setOnClickListener(View.OnClickListener { show(Tue2, "Tuesday2",categoryText!!,dateText) })
-        Tue3.setOnClickListener(View.OnClickListener { show(Tue3, "Tuesday3",categoryText!!,dateText) })
-        Tue4.setOnClickListener(View.OnClickListener { show(Tue4, "Tuesday4",categoryText!!,dateText) })
-        Tue5.setOnClickListener(View.OnClickListener { show(Tue5, "Tuesday5",categoryText!!,dateText) })
-        Tue6.setOnClickListener(View.OnClickListener { show(Tue6, "Tuesday6",categoryText!!,dateText) })
-        Tue7.setOnClickListener(View.OnClickListener { show(Tue7, "Tuesday7",categoryText!!,dateText) })
-        Tue8.setOnClickListener(View.OnClickListener { show(Tue8, "Tuesday8",categoryText!!,dateText) })
-        Tue9.setOnClickListener(View.OnClickListener { show(Tue9, "Tuesday9",categoryText!!,dateText) })
+        Mon1.setOnClickListener(View.OnClickListener { show(Mon1, "Monday",categoryText!!,dateText, "Monday1") })
+        Mon2.setOnClickListener(View.OnClickListener { show(Mon2, "Monday",categoryText!!,dateText, "Monday2") })
+        Mon3.setOnClickListener(View.OnClickListener { show(Mon3, "Monday",categoryText!!,dateText, "Monday3") })
+        Mon4.setOnClickListener(View.OnClickListener { show(Mon4, "Monday",categoryText!!,dateText, "Monday4") })
+        Mon5.setOnClickListener(View.OnClickListener { show(Mon5, "Monday",categoryText!!,dateText, "Monday5") })
+        Mon6.setOnClickListener(View.OnClickListener { show(Mon6, "Monday",categoryText!!,dateText, "Monday6") })
+        Mon7.setOnClickListener(View.OnClickListener { show(Mon7, "Monday",categoryText!!,dateText, "Monday7") })
+        Mon8.setOnClickListener(View.OnClickListener { show(Mon8, "Monday",categoryText!!,dateText, "Monday8") })
+        Mon9.setOnClickListener(View.OnClickListener { show(Mon9, "Monday",categoryText!!,dateText, "Monday9") })
 
 
-        Wed1.setOnClickListener(View.OnClickListener { show(Wed1, "Wednesday1",categoryText!!,dateText) })
-        Wed2.setOnClickListener(View.OnClickListener { show(Wed2, "Wednesday2",categoryText!!,dateText) })
-        Wed3.setOnClickListener(View.OnClickListener { show(Wed3, "Wednesday3",categoryText!!,dateText) })
-        Wed4.setOnClickListener(View.OnClickListener { show(Wed4, "Wednesday4",categoryText!!,dateText) })
-        Wed5.setOnClickListener(View.OnClickListener { show(Wed5, "Wednesday5",categoryText!!,dateText) })
-        Wed6.setOnClickListener(View.OnClickListener { show(Wed6, "Wednesday6",categoryText!!,dateText) })
-        Wed7.setOnClickListener(View.OnClickListener { show(Wed7, "Wednesday7",categoryText!!,dateText) })
-        Wed8.setOnClickListener(View.OnClickListener { show(Wed8, "Wednesday8",categoryText!!,dateText) })
-        Wed9.setOnClickListener(View.OnClickListener { show(Wed9, "Wednesday9",categoryText!!,dateText) })
+        Tue1.setOnClickListener(View.OnClickListener { show(Tue1, "Tuesday",categoryText!!,dateText,"Tuesday1") })
+        Tue2.setOnClickListener(View.OnClickListener { show(Tue2, "Tuesday",categoryText!!,dateText,"Tuesday2") })
+        Tue3.setOnClickListener(View.OnClickListener { show(Tue3, "Tuesday",categoryText!!,dateText,"Tuesday3") })
+        Tue4.setOnClickListener(View.OnClickListener { show(Tue4, "Tuesday",categoryText!!,dateText,"Tuesday4") })
+        Tue5.setOnClickListener(View.OnClickListener { show(Tue5, "Tuesday",categoryText!!,dateText,"Tuesday5") })
+        Tue6.setOnClickListener(View.OnClickListener { show(Tue6, "Tuesday",categoryText!!,dateText,"Tuesday6") })
+        Tue7.setOnClickListener(View.OnClickListener { show(Tue7, "Tuesday",categoryText!!,dateText,"Tuesday7") })
+        Tue8.setOnClickListener(View.OnClickListener { show(Tue8, "Tuesday",categoryText!!,dateText,"Tuesday8") })
+        Tue9.setOnClickListener(View.OnClickListener { show(Tue9, "Tuesday",categoryText!!,dateText,"Tuesday9") })
 
 
-        Thu1.setOnClickListener(View.OnClickListener { show(Thu1, "Thursday1",categoryText!!,dateText) })
-        Thu2.setOnClickListener(View.OnClickListener { show(Thu2, "Thursday2",categoryText!!,dateText) })
-        Thu3.setOnClickListener(View.OnClickListener { show(Thu3, "Thursday3",categoryText!!,dateText) })
-        Thu4.setOnClickListener(View.OnClickListener { show(Thu4, "Thursday4",categoryText!!,dateText) })
-        Thu5.setOnClickListener(View.OnClickListener { show(Thu5, "Thursday5",categoryText!!,dateText) })
-        Thu6.setOnClickListener(View.OnClickListener { show(Thu6, "Thursday6",categoryText!!,dateText) })
-        Thu7.setOnClickListener(View.OnClickListener { show(Thu7, "Thursday7",categoryText!!,dateText) })
-        Thu8.setOnClickListener(View.OnClickListener { show(Thu8, "Thursday8",categoryText!!,dateText) })
-        Thu9.setOnClickListener(View.OnClickListener { show(Thu9, "Thursday9",categoryText!!,dateText) })
+        Wed1.setOnClickListener(View.OnClickListener { show(Wed1, "Wednesday",categoryText!!,dateText,"Wednesday1") })
+        Wed2.setOnClickListener(View.OnClickListener { show(Wed2, "Wednesday",categoryText!!,dateText,"Wednesday2") })
+        Wed3.setOnClickListener(View.OnClickListener { show(Wed3, "Wednesday",categoryText!!,dateText,"Wednesday3") })
+        Wed4.setOnClickListener(View.OnClickListener { show(Wed4, "Wednesday",categoryText!!,dateText,"Wednesday4") })
+        Wed5.setOnClickListener(View.OnClickListener { show(Wed5, "Wednesday",categoryText!!,dateText,"Wednesday5") })
+        Wed6.setOnClickListener(View.OnClickListener { show(Wed6, "Wednesday",categoryText!!,dateText,"Wednesday6") })
+        Wed7.setOnClickListener(View.OnClickListener { show(Wed7, "Wednesday",categoryText!!,dateText,"Wednesday7") })
+        Wed8.setOnClickListener(View.OnClickListener { show(Wed8, "Wednesday",categoryText!!,dateText,"Wednesday8") })
+        Wed9.setOnClickListener(View.OnClickListener { show(Wed9, "Wednesday",categoryText!!,dateText,"Wednesday9") })
 
 
-        Fri1.setOnClickListener(View.OnClickListener { show(Fri1, "Friday1",categoryText!!,dateText) })
-        Fri2.setOnClickListener(View.OnClickListener { show(Fri2, "Friday2",categoryText!!,dateText) })
-        Fri3.setOnClickListener(View.OnClickListener { show(Fri3, "Friday3",categoryText!!,dateText) })
-        Fri4.setOnClickListener(View.OnClickListener { show(Fri4, "Friday4",categoryText!!,dateText) })
-        Fri5.setOnClickListener(View.OnClickListener { show(Fri5, "Friday5",categoryText!!,dateText) })
-        Fri6.setOnClickListener(View.OnClickListener { show(Fri6, "Friday6",categoryText!!,dateText) })
-        Fri7.setOnClickListener(View.OnClickListener { show(Fri7, "Friday7",categoryText!!,dateText) })
-        Fri8.setOnClickListener(View.OnClickListener { show(Fri8, "Friday8",categoryText!!,dateText) })
-        Fri9.setOnClickListener(View.OnClickListener { show(Fri9, "Friday9",categoryText!!,dateText) })
+        Thu1.setOnClickListener(View.OnClickListener { show(Thu1, "Thursday",categoryText!!,dateText,"Thursday1") })
+        Thu2.setOnClickListener(View.OnClickListener { show(Thu2, "Thursday",categoryText!!,dateText,"Thursday2") })
+        Thu3.setOnClickListener(View.OnClickListener { show(Thu3, "Thursday",categoryText!!,dateText,"Thursday3") })
+        Thu4.setOnClickListener(View.OnClickListener { show(Thu4, "Thursday",categoryText!!,dateText,"Thursday4") })
+        Thu5.setOnClickListener(View.OnClickListener { show(Thu5, "Thursday",categoryText!!,dateText,"Thursday5") })
+        Thu6.setOnClickListener(View.OnClickListener { show(Thu6, "Thursday",categoryText!!,dateText,"Thursday6") })
+        Thu7.setOnClickListener(View.OnClickListener { show(Thu7, "Thursday",categoryText!!,dateText,"Thursday7") })
+        Thu8.setOnClickListener(View.OnClickListener { show(Thu8, "Thursday",categoryText!!,dateText,"Thursday8") })
+        Thu9.setOnClickListener(View.OnClickListener { show(Thu9, "Thursday",categoryText!!,dateText,"Thursday9") })
 
 
-        Sat1.setOnClickListener(View.OnClickListener { show(Sat1, "Saturday1",categoryText!!,dateText) })
-        Sat2.setOnClickListener(View.OnClickListener { show(Sat2, "Saturday2",categoryText!!,dateText) })
-        Sat3.setOnClickListener(View.OnClickListener { show(Sat3, "Saturday3",categoryText!!,dateText) })
-        Sat4.setOnClickListener(View.OnClickListener { show(Sat4, "Saturday4",categoryText!!,dateText) })
-        Sat5.setOnClickListener(View.OnClickListener { show(Sat5, "Saturday5",categoryText!!,dateText) })
-        Sat6.setOnClickListener(View.OnClickListener { show(Sat6, "Saturday6",categoryText!!,dateText) })
-        Sat7.setOnClickListener(View.OnClickListener { show(Sat7, "Saturday7",categoryText!!,dateText) })
-        Sat8.setOnClickListener(View.OnClickListener { show(Sat8, "Saturday8",categoryText!!,dateText) })
-        Sat9.setOnClickListener(View.OnClickListener { show(Sat9, "Saturday9",categoryText!!,dateText) })
+        Fri1.setOnClickListener(View.OnClickListener { show(Fri1, "Friday",categoryText!!,dateText,"Friday1") })
+        Fri2.setOnClickListener(View.OnClickListener { show(Fri2, "Friday",categoryText!!,dateText,"Friday2") })
+        Fri3.setOnClickListener(View.OnClickListener { show(Fri3, "Friday",categoryText!!,dateText,"Friday3") })
+        Fri4.setOnClickListener(View.OnClickListener { show(Fri4, "Friday",categoryText!!,dateText,"Friday4") })
+        Fri5.setOnClickListener(View.OnClickListener { show(Fri5, "Friday",categoryText!!,dateText,"Friday5") })
+        Fri6.setOnClickListener(View.OnClickListener { show(Fri6, "Friday",categoryText!!,dateText,"Friday6") })
+        Fri7.setOnClickListener(View.OnClickListener { show(Fri7, "Friday",categoryText!!,dateText,"Friday7") })
+        Fri8.setOnClickListener(View.OnClickListener { show(Fri8, "Friday",categoryText!!,dateText,"Friday8") })
+        Fri9.setOnClickListener(View.OnClickListener { show(Fri9, "Friday",categoryText!!,dateText,"Friday9") })
+
+
+        Sat1.setOnClickListener(View.OnClickListener { show(Sat1, "Saturday",categoryText!!,dateText,"Saturday1") })
+        Sat2.setOnClickListener(View.OnClickListener { show(Sat2, "Saturday",categoryText!!,dateText,"Saturday2") })
+        Sat3.setOnClickListener(View.OnClickListener { show(Sat3, "Saturday",categoryText!!,dateText,"Saturday3") })
+        Sat4.setOnClickListener(View.OnClickListener { show(Sat4, "Saturday",categoryText!!,dateText,"Saturday4") })
+        Sat5.setOnClickListener(View.OnClickListener { show(Sat5, "Saturday",categoryText!!,dateText,"Saturday5") })
+        Sat6.setOnClickListener(View.OnClickListener { show(Sat6, "Saturday",categoryText!!,dateText,"Saturday6") })
+        Sat7.setOnClickListener(View.OnClickListener { show(Sat7, "Saturday",categoryText!!,dateText,"Saturday7") })
+        Sat8.setOnClickListener(View.OnClickListener { show(Sat8, "Saturday",categoryText!!,dateText,"Saturday8") })
+        Sat9.setOnClickListener(View.OnClickListener { show(Sat9, "Saturday",categoryText!!,dateText,"Saturday9") })
 
 
         viewCat!!.setOnClickListener({
@@ -296,7 +303,7 @@ class TimesheeyEntry : AppCompatActivity() {
         private const val IMAGE_PICK_REQUEST_CODE = 1001
     }
 
-    fun show(textView: TextView?, dayname: String?, catView: EditText?, datView: EditText?) {
+    fun show(textView: TextView?, dayname: String?, catView: EditText?, datView: EditText?, entryName: String?) {
         timetable_subject = null
         dialog!!.show()
         var e: String
@@ -315,7 +322,7 @@ class TimesheeyEntry : AppCompatActivity() {
                 //values.put(dayname, timetable_subject);
                 //databaseStudents.child(user.getUid()).updateChildren(values);
                 textView!!.text = timetable_subject
-
+                AddDatabseEntry(dayname,timetable_subject, entryName)
                 //catView!!.text = cTxt
                 if (catView!!.text.toString() == "personal" || catView!!.text.toString() == "Personal")
                 {
@@ -381,8 +388,155 @@ class TimesheeyEntry : AppCompatActivity() {
         }
     }
 
-    /*fun personalCat(textView: TextView?)
+    fun AddDatabseEntry(dname: String?, entry: String?, entryN: String?)
     {
-        textView!!.text = (personalTime?.times(0.5f)).toString()
+        //entryCounter = entryCounter!! + 1;
+        //dataname = dname + entryCouner.toString()
+
+        if(dname == "Monday")
+        {
+            database = FirebaseDatabase.getInstance().getReference("Mon")
+            val Mon = Mon(entryN,entry)
+            database.child(entryN!!).setValue(Mon).addOnSuccessListener {
+                Toast.makeText(this, "Successfully Saved.", Toast.LENGTH_SHORT).show()
+            }.addOnFailureListener{
+                Toast.makeText(this, "Failed to save.", Toast.LENGTH_SHORT).show()
+            }
+        }
+        if(dname == "Tuesday")
+        {
+            database = FirebaseDatabase.getInstance().getReference("Tue")
+            val Tue = Tue(entryN,entry)
+            database.child(entryN!!).setValue(Tue).addOnSuccessListener {
+                Toast.makeText(this, "Successfully Saved.", Toast.LENGTH_SHORT).show()
+            }.addOnFailureListener{
+                Toast.makeText(this, "Failed to save.", Toast.LENGTH_SHORT).show()
+            }
+        }
+        if(dname == "Wednesday")
+        {
+            database = FirebaseDatabase.getInstance().getReference("Wed")
+            val Wed = Mon(entryN,entry)
+            database.child(entryN!!).setValue(Wed).addOnSuccessListener {
+                Toast.makeText(this, "Successfully Saved.", Toast.LENGTH_SHORT).show()
+            }.addOnFailureListener{
+                Toast.makeText(this, "Failed to save.", Toast.LENGTH_SHORT).show()
+            }
+        }
+        if(dname == "Thursday")
+        {
+            database = FirebaseDatabase.getInstance().getReference("Thurs")
+            val Thurs = Thurs(entryN,entry)
+            database.child(entryN!!).setValue(Thurs).addOnSuccessListener {
+                Toast.makeText(this, "Successfully Saved.", Toast.LENGTH_SHORT).show()
+            }.addOnFailureListener{
+                Toast.makeText(this, "Failed to save.", Toast.LENGTH_SHORT).show()
+            }
+        }
+        if(dname == "Friday")
+        {
+            database = FirebaseDatabase.getInstance().getReference("Fri")
+            val Fri = Fri(entryN,entry)
+            database.child(entryN!!).setValue(Fri).addOnSuccessListener {
+                Toast.makeText(this, "Successfully Saved.", Toast.LENGTH_SHORT).show()
+            }.addOnFailureListener{
+                Toast.makeText(this, "Failed to save.", Toast.LENGTH_SHORT).show()
+            }
+        }
+        if(dname == "Saturday")
+        {
+            database = FirebaseDatabase.getInstance().getReference("Sat")
+            val Sat = Sat(entryN,entry)
+            database.child(entryN!!).setValue(Sat).addOnSuccessListener {
+                Toast.makeText(this, "Successfully Saved.", Toast.LENGTH_SHORT).show()
+            }.addOnFailureListener{
+                Toast.makeText(this, "Failed to save.", Toast.LENGTH_SHORT).show()
+            }
+        }
+        if(dname == "Sunday")
+        {
+            database = FirebaseDatabase.getInstance().getReference("Sun")
+            val Sun = Mon(entryN,entry)
+            database.child(entryN!!).setValue(Sun).addOnSuccessListener {
+                Toast.makeText(this, "Successfully Saved.", Toast.LENGTH_SHORT).show()
+            }.addOnFailureListener{
+                Toast.makeText(this, "Failed to save.", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    /*fun RemoveDatabseEntry(dname: String?, entry: String?, entryN: String?)
+    {
+        //entryCounter = entryCounter!! + 1;
+        //dataname = dname + entryCouner.toString()
+
+        if(dname == "Monday")
+        {
+            database = FirebaseDatabase.getInstance().getReference("Mon")
+            database.child(entryN!!).get().addOnSuccessListener{dataSnapshot ->
+                val e = dataSnapshot.child(entryN!!).value
+
+            }
+        }
+        if(dname == "Tuesday")
+        {
+            database = FirebaseDatabase.getInstance().getReference("Tue")
+            val Tue = Tue(entryN,entry)
+            database.child(entryN!!).setValue(Tue).addOnSuccessListener {
+                Toast.makeText(this, "Successfully Saved.", Toast.LENGTH_SHORT).show()
+            }.addOnFailureListener{
+                Toast.makeText(this, "Failed to save.", Toast.LENGTH_SHORT).show()
+            }
+        }
+        if(dname == "Wednesday")
+        {
+            database = FirebaseDatabase.getInstance().getReference("Wed")
+            val Wed = Mon(entryN,entry)
+            database.child(entryN!!).setValue(Wed).addOnSuccessListener {
+                Toast.makeText(this, "Successfully Saved.", Toast.LENGTH_SHORT).show()
+            }.addOnFailureListener{
+                Toast.makeText(this, "Failed to save.", Toast.LENGTH_SHORT).show()
+            }
+        }
+        if(dname == "Thursday")
+        {
+            database = FirebaseDatabase.getInstance().getReference("Thurs")
+            val Thurs = Thurs(entryN,entry)
+            database.child(entryN!!).setValue(Thurs).addOnSuccessListener {
+                Toast.makeText(this, "Successfully Saved.", Toast.LENGTH_SHORT).show()
+            }.addOnFailureListener{
+                Toast.makeText(this, "Failed to save.", Toast.LENGTH_SHORT).show()
+            }
+        }
+        if(dname == "Friday")
+        {
+            database = FirebaseDatabase.getInstance().getReference("Fri")
+            val Fri = Fri(entryN,entry)
+            database.child(entryN!!).setValue(Fri).addOnSuccessListener {
+                Toast.makeText(this, "Successfully Saved.", Toast.LENGTH_SHORT).show()
+            }.addOnFailureListener{
+                Toast.makeText(this, "Failed to save.", Toast.LENGTH_SHORT).show()
+            }
+        }
+        if(dname == "Saturday")
+        {
+            database = FirebaseDatabase.getInstance().getReference("Sat")
+            val Sat = Sat(entryN,entry)
+            database.child(entryN!!).setValue(Sat).addOnSuccessListener {
+                Toast.makeText(this, "Successfully Saved.", Toast.LENGTH_SHORT).show()
+            }.addOnFailureListener{
+                Toast.makeText(this, "Failed to save.", Toast.LENGTH_SHORT).show()
+            }
+        }
+        if(dname == "Sunday")
+        {
+            database = FirebaseDatabase.getInstance().getReference("Sun")
+            val Sun = Mon(entryN,entry)
+            database.child(entryN!!).setValue(Sun).addOnSuccessListener {
+                Toast.makeText(this, "Successfully Saved.", Toast.LENGTH_SHORT).show()
+            }.addOnFailureListener{
+                Toast.makeText(this, "Failed to save.", Toast.LENGTH_SHORT).show()
+            }
+        }
     }*/
 }

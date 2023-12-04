@@ -36,9 +36,8 @@ class SelectPage : AppCompatActivity() {
 
         payCalcu = findViewById(R.id.payCalc)
         payCalcu.setOnClickListener({
-            val database = Firebase.database
-            val myRef = database.getReference("message")
-            myRef.setValue("Hello World")
+            val intent = Intent(this,IncomeCalculator::class.java)
+            startActivity(intent)
             
         })
     }
