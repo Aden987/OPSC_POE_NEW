@@ -80,6 +80,7 @@
         android:backgroundTint="@color/green"
         android:translationX="0dp"
         android:translationY="-50dp"
+        android:id="@+id/profileBtn"
         ></Button>
 
 </LinearLayout>

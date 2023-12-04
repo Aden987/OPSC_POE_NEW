@@ -10,7 +10,7 @@ class UserProfile : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.userprofile)
 
         // Initialize the user profile (you can load it from preferences or elsewhere)
         userProfile = UserProfileImproved("John", "Doe", "Software Engineer", "Example Company")

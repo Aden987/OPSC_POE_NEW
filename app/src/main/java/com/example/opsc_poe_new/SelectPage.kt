@@ -14,6 +14,7 @@ class SelectPage : AppCompatActivity() {
     lateinit var  dailyGoalBtn : Button
     lateinit var  aBtn : Button
     lateinit var  payCalcu : Button
+    lateinit var  profileBtn : Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.selection_page)
@@ -37,6 +38,12 @@ class SelectPage : AppCompatActivity() {
         payCalcu = findViewById(R.id.payCalc)
         payCalcu.setOnClickListener({
             val intent = Intent(this,PaymentCalc::class.java)
+            startActivity(intent)
+        })
+
+        profileBtn = findViewById(R.id.profileBtn)
+        profileBtn.setOnClickListener({
+            val intent = Intent(this,UserProfile::class.java)
             startActivity(intent)
         })
     }
