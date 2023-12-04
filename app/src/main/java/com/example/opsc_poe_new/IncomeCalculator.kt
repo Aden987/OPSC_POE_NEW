@@ -72,7 +72,7 @@ class IncomeCalculator : AppCompatActivity() {
         numberOfHours4.setText("0")
 
 
-        /*calculate.setOnClickListener({
+        calculate.setOnClickListener({
 
 
 
@@ -97,7 +97,7 @@ class IncomeCalculator : AppCompatActivity() {
             answerFinal = answer1 + answer2 + answer3 + answer4
 
             result.setText((answerFinal.toString()))
-        })*/
+        })
 
         /*backBtn.setOnClickListener({
             val intent = Intent(this,SelectPage::class.java)

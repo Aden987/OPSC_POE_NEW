@@ -36,7 +36,7 @@ class SelectPage : AppCompatActivity() {
 
         payCalcu = findViewById(R.id.payCalc)
         payCalcu.setOnClickListener({
-            val intent = Intent(this,IncomeCalculator::class.java)
+            val intent = Intent(this,PaymentCalc::class.java)
             startActivity(intent)
         })
     }

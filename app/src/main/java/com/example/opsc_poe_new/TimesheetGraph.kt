@@ -145,7 +145,7 @@ class TimesheetGraph : AppCompatActivity() {
         // Set the LineData to the LineChart
         //lineChart.data = lineData
 
-        val linedataset = LineDataSet(lineentry, "First")
+        val linedataset = LineDataSet(lineentry, "User Progress")
         linedataset.color = resources.getColor(R.color.green)
 
         //val linedataset1 = LineDataSet(lineentry1, "Second")
