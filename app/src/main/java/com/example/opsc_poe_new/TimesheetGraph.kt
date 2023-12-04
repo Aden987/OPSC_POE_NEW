@@ -1,5 +1,6 @@
 package com.example.opsc_poe_new
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
@@ -35,50 +36,19 @@ class TimesheetGraph : AppCompatActivity() {
         backButton = findViewById(R.id.back_btn)
         backButton.setOnClickListener({
             deleteMonEntries()
+            deleteTueEntries()
+            deleteWedEntries()
+            deleteThursEntries()
+            deleteFriEntries()
+            deleteSatEntries()
+            deleteSunEntries()
+            val intent = Intent(this,SelectPage::class.java)
+            startActivity(intent)
         })
         setLineChartData()
     }
 
-    /*fun setLineChartData()
-    {
-        val xvalue = ArrayList<String>()
-        xvalue.add("Sun")
-        xvalue.add("Mon")
-        xvalue.add("Tue")
-        xvalue.add("Wed")
-        xvalue.add("Thurs")
-        xvalue.add("Fri")
-        xvalue.add("Sat")
 
-        val lineentry = ArrayList<Entry>()
-        lineentry.add(Entry(1.5f, 0))
-        lineentry.add(Entry(3.5f,1))
-        lineentry.add(Entry(8.5f,2))
-        lineentry.add(Entry(4.5f,3))
-        lineentry.add(Entry(5.5f,4))
-
-        val lineentry1 = ArrayList<Entry>()
-        lineentry1.add(Entry(0.5f, 0))
-        lineentry1.add(Entry(0.5f,1))
-        lineentry1.add(Entry(0.5f,2))
-        lineentry1.add(Entry(0.5f,3))
-        lineentry1.add(Entry(0.5f,4))
-
-        val linedataset = LineDataSet(lineentry, "First")
-        linedataset.color = resources.getColor(R.color.green)
-
-        val linedataset1 = LineDataSet(lineentry1, "Second")
-        linedataset.color = resources.getColor(R.color.blue)
-
-        val finaldataset = ArrayList<LineDataSet>()
-        finaldataset.add(linedataset)
-        finaldataset.add(linedataset1)
-
-
-
-        val data = LineData(xvalue, finaldataset as List<ILineDataSet>?)
-        lineChart?.data = data
-    }*/
     fun setLineChartData()
     {
 
@@ -379,6 +349,90 @@ class TimesheetGraph : AppCompatActivity() {
     private fun deleteMonEntries() {
         val database: FirebaseDatabase = FirebaseDatabase.getInstance()
         val reference: DatabaseReference = database.getReference("Mon")
+
+        reference.removeValue()
+            .addOnSuccessListener {
+                // Deletion successful
+                println("All entries deleted successfully.")
+            }
+            .addOnFailureListener { exception ->
+                // Handle errors here
+                println("Failed to delete entries: ${exception.message}")
+            }
+    }
+    private fun deleteTueEntries() {
+        val database: FirebaseDatabase = FirebaseDatabase.getInstance()
+        val reference: DatabaseReference = database.getReference("Tue")
+
+        reference.removeValue()
+            .addOnSuccessListener {
+                // Deletion successful
+                println("All entries deleted successfully.")
+            }
+            .addOnFailureListener { exception ->
+                // Handle errors here
+                println("Failed to delete entries: ${exception.message}")
+            }
+    }
+    private fun deleteWedEntries() {
+        val database: FirebaseDatabase = FirebaseDatabase.getInstance()
+        val reference: DatabaseReference = database.getReference("Wed")
+
+        reference.removeValue()
+            .addOnSuccessListener {
+                // Deletion successful
+                println("All entries deleted successfully.")
+            }
+            .addOnFailureListener { exception ->
+                // Handle errors here
+                println("Failed to delete entries: ${exception.message}")
+            }
+    }
+    private fun deleteThursEntries() {
+        val database: FirebaseDatabase = FirebaseDatabase.getInstance()
+        val reference: DatabaseReference = database.getReference("Thurs")
+
+        reference.removeValue()
+            .addOnSuccessListener {
+                // Deletion successful
+                println("All entries deleted successfully.")
+            }
+            .addOnFailureListener { exception ->
+                // Handle errors here
+                println("Failed to delete entries: ${exception.message}")
+            }
+    }
+    private fun deleteFriEntries() {
+        val database: FirebaseDatabase = FirebaseDatabase.getInstance()
+        val reference: DatabaseReference = database.getReference("Fri")
+
+        reference.removeValue()
+            .addOnSuccessListener {
+                // Deletion successful
+                println("All entries deleted successfully.")
+            }
+            .addOnFailureListener { exception ->
+                // Handle errors here
+                println("Failed to delete entries: ${exception.message}")
+            }
+    }
+    private fun deleteSatEntries() {
+        val database: FirebaseDatabase = FirebaseDatabase.getInstance()
+        val reference: DatabaseReference = database.getReference("Sat")
+
+        reference.removeValue()
+            .addOnSuccessListener {
+                // Deletion successful
+                println("All entries deleted successfully.")
+            }
+            .addOnFailureListener { exception ->
+                // Handle errors here
+                println("Failed to delete entries: ${exception.message}")
+            }
+    }
+    private fun deleteSunEntries() {
+        val database: FirebaseDatabase = FirebaseDatabase.getInstance()
+        val reference: DatabaseReference = database.getReference("Sun")
 
         reference.removeValue()
             .addOnSuccessListener {
