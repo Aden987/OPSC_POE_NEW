@@ -1,44 +1,53 @@
 package com.example.opsc_poe_new
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 class PlayerProfile : AppCompatActivity() {
+
+    lateinit var backBtn: Button
+    lateinit var saveBtn: Button
+    lateinit var nametext: EditText
+    lateinit var surnametext: EditText
+    lateinit var companytext: EditText
+    lateinit var jobtext: EditText
+    private lateinit var database: DatabaseReference
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_player_profile)
 
-        //userProfile = UserProfileImproved("John", "Doe", "Software Engineer", "Example Company")
+        nametext = findViewById(R.id.nameTxt)
+        surnametext = findViewById(R.id.surnameTxt)
+        companytext = findViewById(R.id.companyTxt)
+        jobtext = findViewById(R.id.jobTitleTxt)
+        backBtn = findViewById(R.id.backBtn)
+        saveBtn = findViewById(R.id.saveBtn)
 
-        // Update UI with the current user profile
-        updateUI()
+        backBtn.setOnClickListener({
+            val intent = Intent(this,SelectPage::class.java)
+            startActivity(intent)
+        })
 
-        // Set up onClickListener for the Edit Profile button
-        val btnEditProfile: Button = findViewById(R.id.btnEditProfile)
-        btnEditProfile.setOnClickListener {
-            // You can navigate to the edit profile screen/activity here
-            // For simplicity, we will just print a log message for now
-            println("Edit Profile button clicked")
-        }
+        saveBtn.setOnClickListener({
+            database = FirebaseDatabase.getInstance().getReference("User")
+            val User = User(nametext.text.toString(), surnametext.text.toString(), companytext.text.toString(),jobtext.text.toString())
+            database.child(nametext.text.toString()).setValue(User).addOnSuccessListener {
+                Toast.makeText(this, "Successfully Saved.", Toast.LENGTH_SHORT).show()
+            }.addOnFailureListener{
+                Toast.makeText(this, "Failed to save.", Toast.LENGTH_SHORT).show()
+            }
+        })
+
+
     }
 
-    private fun updateUI() {
-        val tvName: TextView = findViewById(R.id.tvName)
-        //tvName.text = "Name: ${userProfile.firstName} ${userProfile.lastName}"
-    }
-
-    // Uncomment and implement this function when you want to save changes made by the user
-    /*
-    private fun saveUserProfile() {
-        // Save the changes made by the user
-        // userProfile.firstName = etFirstName.text.toString()
-        // userProfile.lastName = etLastName.text.toString()
-        // userProfile.jobTitle = etJobTitle.text.toString()
-        // userProfile.company = etCompany.text.toString()
-
-        // You can save the updated user profile to preferences or a database here*/
-    }
+}
 
     //}

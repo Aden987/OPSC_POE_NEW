@@ -7,20 +7,98 @@
     tools:context=".PlayerProfile">
 
     <TextView
-        android:id="@+id/tvName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Name: John Doe"
-        android:layout_marginTop="20dp"
-        android:layout_centerHorizontal="true" />
+        android:text="User Profile"
+        android:translationX="160dp"
+        android:layout_marginTop="15dp"
+        android:textSize="20dp">
+    </TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name:"
+        android:translationX="80dp"
+        android:layout_marginTop="70dp"
+        android:textSize="15dp">
+    </TextView>
+
+    <EditText
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:translationX="150dp"
+        android:layout_marginTop="55dp"
+        android:textSize="15dp"
+        android:id="@+id/nameTxt"></EditText>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Surname:"
+        android:translationX="80dp"
+        android:layout_marginTop="100dp"
+        android:textSize="15dp">
+    </TextView>
+
+    <EditText
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:translationX="150dp"
+        android:layout_marginTop="85dp"
+        android:textSize="15dp"
+        android:id="@+id/surnameTxt"></EditText>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Company:"
+        android:translationX="80dp"
+        android:layout_marginTop="130dp"
+        android:textSize="15dp">
+    </TextView>
+
+    <EditText
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:translationX="150dp"
+        android:layout_marginTop="115dp"
+        android:textSize="15dp"
+        android:id="@+id/companyTxt"></EditText>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Job Title:"
+        android:translationX="80dp"
+        android:layout_marginTop="160dp"
+        android:textSize="15dp">
+    </TextView>
+
+    <EditText
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:translationX="150dp"
+        android:layout_marginTop="145dp"
+        android:textSize="15dp"
+        android:id="@+id/jobTitleTxt"></EditText>
 
     <Button
-        android:id="@+id/btnEditProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Edit Profile"
-        android:layout_below="@id/tvName"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp" />
+        android:text="Back"
+        android:layout_marginTop="200dp"
+        android:translationX="100dp"
+        android:id="@+id/backBtn">
+    </Button>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        android:layout_marginTop="200dp"
+        android:translationX= "200dp"
+        android:id="@+id/saveBtn">
+    </Button>
 
 </RelativeLayout>

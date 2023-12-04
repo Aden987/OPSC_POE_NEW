@@ -43,7 +43,7 @@ class SelectPage : AppCompatActivity() {
 
         profileBtn = findViewById(R.id.profileBtn)
         profileBtn.setOnClickListener({
-            val intent = Intent(this,UserProfile::class.java)
+            val intent = Intent(this,PlayerProfile::class.java)
             startActivity(intent)
         })
     }
