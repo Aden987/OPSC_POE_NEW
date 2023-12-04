@@ -38,7 +38,6 @@ class SelectPage : AppCompatActivity() {
         payCalcu.setOnClickListener({
             val intent = Intent(this,IncomeCalculator::class.java)
             startActivity(intent)
-            
         })
     }
 }
