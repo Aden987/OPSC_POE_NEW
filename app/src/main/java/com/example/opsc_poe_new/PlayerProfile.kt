@@ -38,8 +38,7 @@ class PlayerProfile : AppCompatActivity() {
         // userProfile.jobTitle = etJobTitle.text.toString()
         // userProfile.company = etCompany.text.toString()
 
-        // You can save the updated user profile to preferences or a database here
+        // You can save the updated user profile to preferences or a database here*/
     }
-    */
-    }
-}
+
+    //}
